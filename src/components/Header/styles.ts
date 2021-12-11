@@ -3,11 +3,17 @@ import styled from 'styled-components'
 export const Container = styled.header`
     background: var(--black);
     font-weight: 300;
-    .mobile{
+    .showMobile{
         @media (max-width:1000px){
-            a{
-                display: none;
-            }
+            display: flex;
+            justify-content: space-between;
+
+        }
+        
+    }
+    .hide{
+        @media (max-width:1050px){
+            display: none;
         }
     }
 `

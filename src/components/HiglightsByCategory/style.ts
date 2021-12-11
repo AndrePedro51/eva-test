@@ -22,6 +22,9 @@ export const HighlightsByCategoryStyle = styled.section`
         margin: 0 auto;
         margin-top: 1rem;
         transition: 0.2s ease-in-out;
+        @media (max-width: 1100px){
+            opacity: 1;
+        }
     }
     
     button.rec-arrow-right, button.rec-arrow-left{
@@ -51,6 +54,9 @@ export const HighlightsByCategoryStyle = styled.section`
             }
             border: 1px solid var(--pink);
             padding: 15px 1.25rem;
+            @media (max-width: 1100px) {
+                border: 0;
+            }
         }
         
     }

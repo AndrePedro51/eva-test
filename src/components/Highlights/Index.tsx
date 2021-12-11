@@ -1,5 +1,5 @@
 import { HighlightsStyle } from "./style";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Carousel from "react-elastic-carousel"
 import { api } from "../../services/api";
 import starImgFill from "../../assets/star-fill.svg"
@@ -34,20 +34,45 @@ interface Product{
         
         
 }
-
+function useWindowSize() {
+    const [size, setSize] = useState(0);
+    let itemsToShow = 4
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize(window.innerWidth);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    if(size > 1100){
+        itemsToShow = 4
+    }else if(size > 750){
+        itemsToShow = 3
+    }else if(size > 550){
+        itemsToShow = 2
+    }else{
+        itemsToShow = 1
+    }
+    return itemsToShow;
+    
+}
 
 export function Highlights(){
+    const items = useWindowSize()
+    console.log(items);
     const [products, setProducts] = useState<Product[]>([])
     useEffect(() => {
         api.get('products')
         .then(response => setProducts(response.data))
     }, [])
+    
 
     return(
         <HighlightsStyle>
             <h2>Destaques</h2>
             <Carousel 
-                itemsToShow={4} 
+                itemsToShow={items} 
                 isRTL={false} 
                 pagination={false}
                 

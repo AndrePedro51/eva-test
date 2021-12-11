@@ -8,10 +8,12 @@ import { Categories, Container, Content, InputWrapper } from './styles';
 
 export function Header(){
     return(
+        
         <Container>
-            <Content className="mobile">
+            
+            <Content className='showMobile'>
                 <img src={logoImg} alt="Logo Eva" />
-                <Categories>
+                <Categories className="hide">
                     <p>Categorias</p>
                     <img src={arrowImg} alt="Meu carrinho" />
                     <ul>
@@ -21,14 +23,15 @@ export function Header(){
                         <li><a href="#">Informática</a></li>
                     </ul>
                 </Categories>
-                <InputWrapper>
+                <InputWrapper className="hide">
                     <input type="text" />
                     <button type="button">
                         <img src={searchImg} alt="Pesquisar" />
                     </button>
                 </InputWrapper>
-                <a href="#" >Minha conta<img src={userImg} alt="Meu carrinho" /></a>
-                <a href="#">Carrinho (2)<img src={cartImg} alt="Categorias" /></a>
+                <a href="#" className="hide">Minha conta<img src={userImg} alt="Meu carrinho" /></a>
+                <a href="#" className="hide">Carrinho (2)<img src={cartImg} alt="Categorias" /></a>
+                
             </Content>
         </Container>
         

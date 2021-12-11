@@ -32,14 +32,39 @@ export const CategoriesStyle = styled.section`
         bottom: 1rem;
         color: var(--text-white);
     }
-    @media(max-width: 600px){
-        display: block;
-        figure{
-            width: 200px;
-            margin-top: 2rem;
-        }
-        text-align: center;
+    @media(max-width: 700px){
+        display: none;
     }
     
     
+`
+export const CategoriesStyleMobile = styled.section`
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    @media(min-width: 701px){
+        display: none;
+    }
+    figure {   
+        position: relative; 
+        display: flex;
+        height: 100%;
+        flex-flow: column;
+        margin: auto;
+        cursor: pointer;
+        transition: 0.3s;
+    }   
+    img{
+        border-radius: 0.25rem;
+        object-fit: cover;
+    }
+    figcaption{
+        text-align: center;
+        font-weight: 700;
+        font-size: 2rem;
+        position: absolute;
+        width: 100%;
+        bottom: 1rem;
+        color: var(--text-white);
+    }
 `

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import { api } from "../../services/api"
 import { CategoryCarousel, HighlightsByCategoryStyle } from "./style"
 import Carousel from "react-elastic-carousel"
@@ -34,7 +34,32 @@ interface Category{
     ]
 }
 
+function useWindowSize() {
+    const [size, setSize] = useState(0);
+    let itemsToShow = 4
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize(window.innerWidth);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    if(size > 1100){
+        itemsToShow = 4
+    }else if(size > 750){
+        itemsToShow = 3
+    }else if(size > 550){
+        itemsToShow = 2
+    }else{
+        itemsToShow = 1
+    }
+    return itemsToShow;
+    
+}
+
 export function HighlightsByCategory(){
+    const items = useWindowSize()
     const [categories, setCategories] = useState<Category[]>([])
     useEffect(() => {
         api.get('categories')
@@ -45,10 +70,10 @@ export function HighlightsByCategory(){
             {categories.map(category => {
                 if(category.product.length >= 4){
                     return(
-                        <CategoryCarousel>
+                        <CategoryCarousel key={category.id}>
                             <h2>Destaques em {category.name}</h2>
                             <Carousel
-                                itemsToShow={4} 
+                                itemsToShow={items} 
                                 isRTL={false} 
                                 pagination={false}
                             >

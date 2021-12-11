@@ -9,9 +9,13 @@ export const InformationsStyle = styled.section`
         color: var(--pink);
         padding-bottom: 0.5rem;
         border-bottom: 2px solid var(--text-white);
+        
     }
     @media(max-width: 800px){
-        text-align: center;
+        text-align: left;
+        h2{
+            margin: auto 2rem;
+        }
     }
 `
 
@@ -22,10 +26,10 @@ export const InformationsDivStyle = styled.div`
     gap: 6.25rem;
     @media(max-width: 800px){
         div{
-            margin-top: 2rem;
-            width: 100%;
+            margin: 2rem auto;
+            width: 80%;
         }
-        text-align: center;
+        text-align: left;
         gap: 0;
     }
     

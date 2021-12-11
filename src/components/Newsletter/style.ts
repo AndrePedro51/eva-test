@@ -14,9 +14,6 @@ export const Content = styled.section`
         font-weight: 400;
         font-size: 1.5rem;
     }
-    form{
-
-    }
     input{
         height: 2rem;
         width: 17.375rem;
@@ -25,6 +22,10 @@ export const Content = styled.section`
         border: 0;
         padding: 0.625rem 0 0.375rem 0.3125rem;
         font-size: 0.875rem;
+
+        @media (max-width: 700px) {
+            margin-bottom: 1rem;
+        }
     }
     button{
         display: block;
